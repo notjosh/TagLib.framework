@@ -2,14 +2,17 @@
 //  TagLib.m
 //  TagLibBundle
 //
+//  A simple Obj-C wrapper around the C functions that TagLib exposes
+//
 //  Created by Nick Ludlam on 21/07/2010.
 //
 
 #import "TagLib.h"
 #include "tag_c.h"
 
+// Required in order to be able to use #require in Ruby to load this bundle
+void Init_TagLibBundle(void) { }
 
-void Init_TagLib(void) { }
 
 @implementation TagLib
 
@@ -25,10 +28,13 @@ void Init_TagLib(void) { }
 
 - (id)initWithFileAtPath:(NSString *)filePath {
     if (self = [super init]) {
-        // Initialisation
+
+        // Our mutable dictionary for accumulation
+        NSMutableDictionary *tempDictionary = [NSMutableDictionary dictionary];
+
+        // Initialisation as per the TagLib example C code
         TagLib_File *file;
         TagLib_Tag *tag;
-        NSMutableDictionary *tempDictionary = [NSMutableDictionary dictionary];
         
         // We want UTF8 strings out of TagLib
         taglib_set_strings_unicode(TRUE);
@@ -38,7 +44,8 @@ void Init_TagLib(void) { }
         if (file != NULL) {
             tag = taglib_file_tag(file);
 
-            // Collect title, artist, album, comment, genre, track and year in turn
+            // Collect title, artist, album, comment, genre, track and year in turn.
+            // Sanity check them for presence, and length
             if (taglib_tag_title(tag) != NULL && strlen(taglib_tag_title(tag)) > 0) {
                 [tempDictionary setObject:[NSString stringWithCString:taglib_tag_title(tag)
                                                              encoding:NSUTF8StringEncoding]
