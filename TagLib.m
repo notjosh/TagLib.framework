@@ -13,24 +13,22 @@
 // Required in order to be able to use #require in Ruby to load this bundle
 void Init_TagLibBundle(void) { }
 
-
 @implementation TagLib
 
-@synthesize tags;
+@synthesize validTags, validAudioProperties;
 
-- (id)init {
-    if (self = [super init]) {
-        self.tags = [NSDictionary dictionary];
-    }
-    
-    return self;
-}
+@synthesize title;
+@synthesize artist;
+@synthesize album;
+@synthesize comment;
+@synthesize genre;
+@synthesize track;
+@synthesize year;
+
+@synthesize length, sampleRate, bitRate;
 
 - (id)initWithFileAtPath:(NSString *)filePath {
     if (self = [super init]) {
-
-        // Our mutable dictionary for accumulation
-        NSMutableDictionary *tempDictionary = [NSMutableDictionary dictionary];
 
         // Initialisation as per the TagLib example C code
         TagLib_File *file;
@@ -43,48 +41,66 @@ void Init_TagLibBundle(void) { }
 
         if (file != NULL) {
             tag = taglib_file_tag(file);
+            
+            if (tag != NULL) {
+                // Collect title, artist, album, comment, genre, track and year in turn.
+                // Sanity check them for presence, and length
+                
+                self.validTags = YES;
+                
+                if (taglib_tag_title(tag) != NULL &&
+                    strlen(taglib_tag_title(tag)) > 0) {
+                    self.title = [NSString stringWithCString:taglib_tag_title(tag)
+                                                    encoding:NSUTF8StringEncoding];
+                }
+                
+                if (taglib_tag_artist(tag) != NULL &&
+                    strlen(taglib_tag_artist(tag)) > 0) {
+                    self.artist = [NSString stringWithCString:taglib_tag_artist(tag)
+                                                     encoding:NSUTF8StringEncoding];
+                }
+                
+                if (taglib_tag_album(tag) != NULL &&
+                    strlen(taglib_tag_album(tag)) > 0) {
+                    self.album = [NSString stringWithCString:taglib_tag_album(tag)
+                                                    encoding:NSUTF8StringEncoding];
+                }
+                
+                if (taglib_tag_comment(tag) != NULL &&
+                    strlen(taglib_tag_comment(tag)) > 0) {
+                    self.comment = [NSString stringWithCString:taglib_tag_comment(tag)
+                                                      encoding:NSUTF8StringEncoding];
+                }
+                
+                if (taglib_tag_genre(tag) != NULL &&
+                    strlen(taglib_tag_genre(tag)) > 0) {
+                    self.genre = [NSString stringWithCString:taglib_tag_genre(tag)
+                                                    encoding:NSUTF8StringEncoding];
+                }
+                
+                // Year and track are uints
+                if (taglib_tag_year(tag) > 0) {
+                    self.year = [NSNumber numberWithUnsignedInt:taglib_tag_year(tag)];
+                }
+                
+                if (taglib_tag_track(tag) > 0) {
+                    self.track = [NSNumber numberWithUnsignedInt:taglib_tag_track(tag)];
+                }
+            } else {
+                self.validTags = NO;
+            }
+            
+            const TagLib_AudioProperties *properties = taglib_file_audioproperties(file);
 
-            // Collect title, artist, album, comment, genre, track and year in turn.
-            // Sanity check them for presence, and length
-            if (taglib_tag_title(tag) != NULL && strlen(taglib_tag_title(tag)) > 0) {
-                [tempDictionary setObject:[NSString stringWithCString:taglib_tag_title(tag)
-                                                             encoding:NSUTF8StringEncoding]
-                                   forKey:@"title"];
-            }
-            
-            if (taglib_tag_artist(tag) != NULL && strlen(taglib_tag_artist(tag)) > 0) {
-                [tempDictionary setObject:[NSString stringWithCString:taglib_tag_artist(tag)
-                                                             encoding:NSUTF8StringEncoding]
-                             forKey:@"artist"];
-            }
-            
-            if (taglib_tag_album(tag) != NULL && strlen(taglib_tag_album(tag)) > 0) {
-                [tempDictionary setObject:[NSString stringWithCString:taglib_tag_album(tag)
-                                                             encoding:NSUTF8StringEncoding]
-                                   forKey:@"album"];
-            }
-            
-            if (taglib_tag_comment(tag) != NULL && strlen(taglib_tag_comment(tag)) > 0) {
-                [tempDictionary setObject:[NSString stringWithCString:taglib_tag_comment(tag)
-                                                             encoding:NSUTF8StringEncoding]
-                                   forKey:@"comment"];
-            }
-            
-            if (taglib_tag_genre(tag) != NULL && strlen(taglib_tag_genre(tag)) > 0) {
-                [tempDictionary setObject:[NSString stringWithCString:taglib_tag_genre(tag)
-                                                             encoding:NSUTF8StringEncoding]
-                                   forKey:@"genre"];
-            }
-            
-            // Year and track are uints
-            if (taglib_tag_year(tag) > 0) {
-                [tempDictionary setObject:[NSNumber numberWithUnsignedInt:taglib_tag_year(tag)]
-                                   forKey:@"year"];
-            }
-            
-            if (taglib_tag_track(tag) > 0) {
-                [tempDictionary setObject:[NSNumber numberWithUnsignedInt:taglib_tag_track(tag)]
-                                   forKey:@"track"];
+            if (properties != NULL) {
+                
+                self.validAudioProperties = YES;
+
+                if (taglib_audioproperties_length(properties) > 0) {
+                    self.length = [NSNumber numberWithInt:taglib_audioproperties_length(properties)];
+                }
+            } else {
+                self.validAudioProperties = NO;
             }
             
             // Free up our used memory so far
@@ -92,18 +108,9 @@ void Init_TagLibBundle(void) { }
             taglib_file_free(file);
             
         }
-
-        self.tags = [NSDictionary dictionaryWithDictionary:tempDictionary];
-        [tempDictionary release];
     }
     
     return self;
-}
-
-
-- (void)dealloc {
-    [tags release]; tags = nil;
-    [super dealloc];
 }
 
 @end
