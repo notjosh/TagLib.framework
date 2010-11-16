@@ -13,6 +13,8 @@
     BOOL validTags;
     BOOL validAudioProperties;
     
+    NSString *path;
+
     NSString *title;
     NSString *artist;
     NSString *album;
@@ -25,6 +27,8 @@
     NSNumber *sampleRate;
     NSNumber *bitRate;
 }
+
+@property (nonatomic, copy) NSString *path;
 
 @property (nonatomic) BOOL validTags;
 @property (nonatomic) BOOL validAudioProperties;

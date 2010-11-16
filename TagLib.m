@@ -17,6 +17,8 @@ void Init_TagLibBundle(void) { }
 
 @synthesize validTags, validAudioProperties;
 
+@synthesize path;
+
 @synthesize title;
 @synthesize artist;
 @synthesize album;
@@ -38,6 +40,8 @@ void Init_TagLibBundle(void) { }
         taglib_set_strings_unicode(TRUE);
 
         file = taglib_file_new([filePath cStringUsingEncoding:NSUTF8StringEncoding]);
+
+        self.path = filePath;
 
         if (file != NULL) {
             tag = taglib_file_tag(file);
