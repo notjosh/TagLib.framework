@@ -41,7 +41,7 @@ void Init_TagLibBundle(void) { }
 
         file = taglib_file_new([filePath cStringUsingEncoding:NSUTF8StringEncoding]);
 
-        self.path = [NSString stringWithString:filePath];
+        self.path = filePath;
 
         if (file != NULL) {
             tag = taglib_file_tag(file);
