@@ -11,7 +11,7 @@
 #include "tag_c.h"
 
 // Required in order to be able to use #require in Ruby to load this bundle
-void Init_TagLibBundle(void) { }
+void Init_TagLib(void) { }
 
 @implementation TagLib
 

@@ -71,7 +71,7 @@
 #define TAGLIB_WITH_MP4 1
 
 /* Version number of package */
-#define VERSION "1.6.3"
+#define VERSION "1.7.0"
 
 /* With ASF support */
 #define WITH_ASF 1
