@@ -118,7 +118,7 @@ void Init_TagLib(void) { }
 }
 
 - (NSString *)description {
-	return [NSString stringWithFormat:@"%@ - Title: %@, Artist: %@", [super description], title, artist];
+	return [NSString stringWithFormat:@"%@ - Path: %@", [super description], path];
 }
 
 - (NSString *)inspect {
