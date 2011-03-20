@@ -1,1 +1,5 @@
-Download taglib sources from http://developer.kde.org/~wheeler/taglib.html and rename the unpacked folder to 'taglib-src'
+To build the Framework and Bundle targets, you must do the following:
+
+- Download the TagLib v1.7 sources from http://developer.kde.org/~wheeler/taglib.html
+- Unpack the sources into a folder inside this XCode project called 'taglib-src'
+
