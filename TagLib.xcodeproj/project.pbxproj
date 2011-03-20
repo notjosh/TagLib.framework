@@ -1444,6 +1444,7 @@
 				INSTALL_PATH = "$(HOME)/Library/Bundles";
 				ONLY_ACTIVE_ARCH = NO;
 				OTHER_CFLAGS = (
+					"-DNDEBUG=1",
 					"-DWITH_ASF=1",
 					"-DWITH_MP4=1",
 					"-DTAGLIB_WITH_MP4=1",
@@ -1503,6 +1504,7 @@
 				INFOPLIST_FILE = Info.plist;
 				INSTALL_PATH = "@executable_path/../Frameworks";
 				OTHER_CFLAGS = (
+					"-DNDEBUG=1",
 					"-DWITH_ASF=1",
 					"-DWITH_MP4=1",
 					"-DTAGLIB_WITH_MP4=1",
