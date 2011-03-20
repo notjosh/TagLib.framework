@@ -356,7 +356,6 @@
 		011B7CF9132FE3200096B956 /* asfpicture.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = asfpicture.h; sourceTree = "<group>"; };
 		012AA451122197AF0012E520 /* TagLib.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TagLib.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
 		012AA456122198530012E520 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
-		0197917312F314F900785E60 /* Foo-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Foo-Info.plist"; sourceTree = "<group>"; };
 		0867D69BFE84028FC02AAC07 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = /System/Library/Frameworks/Foundation.framework; sourceTree = "<absolute>"; };
 		089C1667FE841158C02AAC07 /* English */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = English; path = English.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		32DBCF5E0370ADEE00C91783 /* TagLib_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TagLib_Prefix.pch; sourceTree = "<group>"; };
@@ -551,7 +550,6 @@
 				0867D69AFE84028FC02AAC07 /* External Frameworks and Libraries */,
 				034768DFFF38A50411DB9C8B /* Products */,
 				012AA456122198530012E520 /* Foundation.framework */,
-				0197917312F314F900785E60 /* Foo-Info.plist */,
 			);
 			name = TagLib;
 			sourceTree = "<group>";

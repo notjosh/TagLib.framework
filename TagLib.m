@@ -117,4 +117,12 @@ void Init_TagLib(void) { }
     return self;
 }
 
+- (NSString *)description {
+	return [NSString stringWithFormat:@"%@ - Title: %@, Artist: %@", [super description], title, artist];
+}
+
+- (NSString *)inspect {
+	return [self description];
+}
+
 @end
