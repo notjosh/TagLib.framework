@@ -11,6 +11,10 @@
 		012AA4551221984C0012E520 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = CAB378B811C1584E0035BFEA /* libz.dylib */; };
 		012AA457122198530012E520 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 012AA456122198530012E520 /* Foundation.framework */; };
 		01699FE912219CD600D5CAFE /* config.h in Headers */ = {isa = PBXBuildFile; fileRef = CAB378CD11C1598D0035BFEA /* config.h */; };
+		42B4B7C91777CE7800A28F9D /* tdebuglistener.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 42B4B7C71777CE7800A28F9D /* tdebuglistener.cpp */; };
+		42B4B7CA1777CE7800A28F9D /* tdebuglistener.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 42B4B7C71777CE7800A28F9D /* tdebuglistener.cpp */; };
+		42B4B7CB1777CE7800A28F9D /* tdebuglistener.h in Headers */ = {isa = PBXBuildFile; fileRef = 42B4B7C81777CE7800A28F9D /* tdebuglistener.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		42B4B7CC1777CE7800A28F9D /* tdebuglistener.h in Headers */ = {isa = PBXBuildFile; fileRef = 42B4B7C81777CE7800A28F9D /* tdebuglistener.h */; };
 		42C945BC173B05A90093E39E /* taglib_config.h in Headers */ = {isa = PBXBuildFile; fileRef = 42C945BB173B05A90093E39E /* taglib_config.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		42C945BD173B05A90093E39E /* taglib_config.h in Headers */ = {isa = PBXBuildFile; fileRef = 42C945BB173B05A90093E39E /* taglib_config.h */; };
 		42C946C9173B05C00093E39E /* ape-tag-format.txt in Resources */ = {isa = PBXBuildFile; fileRef = 42C945C0173B05C00093E39E /* ape-tag-format.txt */; };
@@ -426,6 +430,8 @@
 		0867D69BFE84028FC02AAC07 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = /System/Library/Frameworks/Foundation.framework; sourceTree = "<absolute>"; };
 		089C1667FE841158C02AAC07 /* English */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = English; path = English.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		32DBCF5E0370ADEE00C91783 /* TagLib_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TagLib_Prefix.pch; sourceTree = "<group>"; };
+		42B4B7C71777CE7800A28F9D /* tdebuglistener.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = tdebuglistener.cpp; sourceTree = "<group>"; };
+		42B4B7C81777CE7800A28F9D /* tdebuglistener.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = tdebuglistener.h; sourceTree = "<group>"; };
 		42C945BB173B05A90093E39E /* taglib_config.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = taglib_config.h; path = "taglib-src/taglib_config.h"; sourceTree = "<group>"; };
 		42C945C0173B05C00093E39E /* ape-tag-format.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "ape-tag-format.txt"; sourceTree = "<group>"; };
 		42C945C1173B05C00093E39E /* apefile.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = apefile.cpp; sourceTree = "<group>"; };
@@ -1088,6 +1094,8 @@
 				42C946A3173B05C00093E39E /* tbytevectorstream.h */,
 				42C946A4173B05C00093E39E /* tdebug.cpp */,
 				42C946A5173B05C00093E39E /* tdebug.h */,
+				42B4B7C71777CE7800A28F9D /* tdebuglistener.cpp */,
+				42B4B7C81777CE7800A28F9D /* tdebuglistener.h */,
 				42C946A6173B05C00093E39E /* tfile.cpp */,
 				42C946A7173B05C00093E39E /* tfile.h */,
 				42C946A8173B05C00093E39E /* tfilestream.cpp */,
@@ -1225,6 +1233,7 @@
 				42C947B8173B05C00093E39E /* mpegproperties.h in Headers */,
 				42C947BC173B05C00093E39E /* xingheader.h in Headers */,
 				42C947C0173B05C00093E39E /* oggflacfile.h in Headers */,
+				42B4B7CC1777CE7800A28F9D /* tdebuglistener.h in Headers */,
 				42C947C4173B05C00093E39E /* oggfile.h in Headers */,
 				42C947C8173B05C00093E39E /* oggpage.h in Headers */,
 				42C947CC173B05C00093E39E /* oggpageheader.h in Headers */,
@@ -1358,6 +1367,7 @@
 				42C94818173B05C00093E39E /* tbytevector.h in Headers */,
 				42C9481C173B05C00093E39E /* tbytevectorlist.h in Headers */,
 				42C94820173B05C00093E39E /* tbytevectorstream.h in Headers */,
+				42B4B7CB1777CE7800A28F9D /* tdebuglistener.h in Headers */,
 				42C94824173B05C00093E39E /* tdebug.h in Headers */,
 				42C94828173B05C00093E39E /* tfile.h in Headers */,
 				42C9482C173B05C00093E39E /* tfilestream.h in Headers */,
@@ -1573,6 +1583,7 @@
 				42C9482B173B05C00093E39E /* tfilestream.cpp in Sources */,
 				42C9482F173B05C00093E39E /* tiostream.cpp in Sources */,
 				42C94835173B05C00093E39E /* tlist.tcc in Sources */,
+				42B4B7CA1777CE7800A28F9D /* tdebuglistener.cpp in Sources */,
 				42C94839173B05C00093E39E /* tmap.tcc in Sources */,
 				42C9483B173B05C00093E39E /* tpropertymap.cpp in Sources */,
 				42C9483F173B05C00093E39E /* trefcounter.cpp in Sources */,
@@ -1673,6 +1684,7 @@
 				42C9481A173B05C00093E39E /* tbytevectorlist.cpp in Sources */,
 				42C9481E173B05C00093E39E /* tbytevectorstream.cpp in Sources */,
 				42C94822173B05C00093E39E /* tdebug.cpp in Sources */,
+				42B4B7C91777CE7800A28F9D /* tdebuglistener.cpp in Sources */,
 				42C94826173B05C00093E39E /* tfile.cpp in Sources */,
 				42C9482A173B05C00093E39E /* tfilestream.cpp in Sources */,
 				42C9482E173B05C00093E39E /* tiostream.cpp in Sources */,
@@ -1831,7 +1843,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
-				GCC_C_LANGUAGE_STANDARD = gnu99;
+				CLANG_CXX_LIBRARY = "libstdc++";
+				GCC_C_LANGUAGE_STANDARD = "compiler-default";
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
@@ -1844,6 +1857,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
+				CLANG_CXX_LIBRARY = "libstdc++";
 				INSTALL_PATH = "";
 				ONLY_ACTIVE_ARCH = NO;
 				SDKROOT = "";
