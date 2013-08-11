@@ -1797,7 +1797,7 @@
 					TAGLIB_NO_CONFIG,
 				);
 				INFOPLIST_FILE = Info.plist;
-				INSTALL_PATH = "@executable_path/../Frameworks";
+				INSTALL_PATH = "@rpath";
 				OTHER_CFLAGS = (
 					"-DWITH_ASF=1",
 					"-DWITH_MP4=1",
@@ -1825,7 +1825,7 @@
 					TAGLIB_NO_CONFIG,
 				);
 				INFOPLIST_FILE = Info.plist;
-				INSTALL_PATH = "@executable_path/../Frameworks";
+				INSTALL_PATH = "@rpath";
 				OTHER_CFLAGS = (
 					"-DNDEBUG=1",
 					"-DWITH_ASF=1",
